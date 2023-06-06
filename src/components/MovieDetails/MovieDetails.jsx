@@ -1,6 +1,8 @@
-const MoviesDetails = ({ id, movie }) => {
-  const { poster_path, title, vote_average, overview, genres } = movie;
-  console.log(movie);
+import { Link, Outlet } from "react-router-dom";
+
+const MoviesDetails = ({ movie }) => {
+  const { poster_path, title, vote_average, overview} = movie;
+  //console.log(movie);
   return (
     <div>
       <button>Go back</button>
@@ -18,8 +20,21 @@ const MoviesDetails = ({ id, movie }) => {
 
       <div>
         <h3>Genres</h3>
-        <ul>{genres.map(({name}) => (<li>{name}</li>))}</ul>
+        {/* <ul>{genres.map(({name}) => (<li>{name}</li>))}</ul> */}
       </div>
+
+      <div>
+        <h3>Additional Information</h3>
+        <ul>
+          <li>
+            <Link to='cast'>Cast</Link>
+          </li>
+          <li>
+            <Link to='reviews'>Reviews</Link>
+          </li>
+        </ul>
+      </div>
+      <Outlet/>
     </div>
   );
 };

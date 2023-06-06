@@ -17,7 +17,7 @@ const HomePage = () => {
     getTrending().then(responseResolved).catch(responseRejected);
   }, []);
 
-  return <MoviesList trendingMovies={trendingMovies} />;
+  return <MoviesList movies={trendingMovies} />;
 };
 
 export default HomePage;
