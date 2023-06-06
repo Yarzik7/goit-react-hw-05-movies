@@ -19,7 +19,7 @@ const MoviesDetailsPage = () => {
       getMovieDetails(movieId).then(responseResolved).catch(responseRejected);
     }, [movieId]);
 
-  return <MoviesDetails id={movieId} />;
+  return <MoviesDetails id={movieId} movie={movie} />;
 };
 
 export default MoviesDetailsPage;
