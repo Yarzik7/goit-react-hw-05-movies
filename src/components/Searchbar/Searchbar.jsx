@@ -4,6 +4,7 @@ import {
   SearchBarStyled,
   ButtonSubmitStyled,
 } from './Searchbar.styled';
+import PropTypes from 'prop-types';
 
 const Searchbar = ({ handleFormSubmit }) => {
   const [query, setQuery] = useState('');
@@ -36,6 +37,10 @@ const Searchbar = ({ handleFormSubmit }) => {
       <ButtonSubmitStyled>Search</ButtonSubmitStyled>
     </SearchBarStyled>
   );
+};
+
+Searchbar.propTypes = {
+  handleFormSubmit: PropTypes.func.isRequired,
 };
 
 export default Searchbar;

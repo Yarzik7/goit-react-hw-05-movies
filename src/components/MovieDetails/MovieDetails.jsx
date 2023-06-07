@@ -1,5 +1,8 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Suspense } from 'react';
+import PropTypes from 'prop-types';
+import { BackLink } from 'components/BackLink/BackLink';
+import { HiArrowLeft } from 'react-icons/hi';
 import {
   MovieGenerallInfoStyled,
   MovieTitleStyled,
@@ -10,8 +13,6 @@ import {
   AddInfoTitleStyled,
   InfoLinksListStyled,
 } from './MovieDetails.styled';
-import { BackLink } from 'components/BackLink/BackLink';
-import { HiArrowLeft } from 'react-icons/hi';
 
 const MoviesDetails = ({ movie }) => {
   const { poster_path, title, vote_average, overview } = movie;
@@ -65,6 +66,15 @@ const MoviesDetails = ({ movie }) => {
       </Suspense>
     </>
   );
+};
+
+MoviesDetails.propTypes = {
+  movie: PropTypes.shape({
+    poster_path: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    vote_average: PropTypes.number.isRequired,
+    overview: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default MoviesDetails;

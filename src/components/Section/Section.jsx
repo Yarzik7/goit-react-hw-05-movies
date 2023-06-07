@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { SectionStyles, SectionTitleStyled } from './Section.styled';
 import { Container } from './Container/Container';
 
-const Section = ({ children, title }) => {
+const Section = ({ children, title = '' }) => {
   return (
     <SectionStyles>
       <Container>
@@ -15,6 +15,7 @@ const Section = ({ children, title }) => {
 
 Section.propTypes = {
   children: PropTypes.node.isRequired,
+  title: PropTypes.string,
 };
 
 export {Section};
