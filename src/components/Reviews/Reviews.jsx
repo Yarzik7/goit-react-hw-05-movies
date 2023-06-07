@@ -2,6 +2,7 @@ import getReviews from "api/getReviews";
 import ReviewItem from "components/ReviewItem/ReviewItem";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { ReviewsListStyled } from "./Reviews.styled";
 
 const mapReviews = ({ id, author, content }) => (
   <ReviewItem
@@ -27,7 +28,7 @@ const Reviews = () => {
       getReviews(movieId).then(responseResolved).catch(responseRejected);
     }, [movieId]);
 
-    return <ul>{reviews.map(mapReviews)}</ul>;
+    return <ReviewsListStyled>{reviews.map(mapReviews)}</ReviewsListStyled>;
 };
 
 export default Reviews;

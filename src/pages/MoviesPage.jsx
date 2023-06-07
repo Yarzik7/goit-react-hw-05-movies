@@ -3,6 +3,7 @@ import Searchbar from 'components/Searchbar/Searchbar';
 import { useEffect, useState } from 'react';
 import getMovies from 'api/getMovies';
 import { useSearchParams } from 'react-router-dom';
+import { Section } from 'components/Section/Section';
 
 const MoviesPage = () => {
   const [page, setPage] = useState(1);
@@ -38,10 +39,16 @@ const MoviesPage = () => {
   };
 
   return (
-    <section>
-      <Searchbar handleFormSubmit={handleFormSubmit} />
-      {!!movies.length && <MoviesList movies={movies} />}
-    </section>
+    <main>
+      <Section>
+        <Searchbar handleFormSubmit={handleFormSubmit} />
+      </Section>
+      {!!movies.length && (
+        <Section>
+          <MoviesList movies={movies} />
+        </Section>
+      )}
+    </main>
   );
 };
 

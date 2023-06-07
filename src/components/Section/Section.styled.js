@@ -1,8 +1,12 @@
 import styled from '@emotion/styled';
 
 const SectionStyles = styled.section`
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 `;
 
-export { SectionStyles };
+const SectionTitleStyled = styled.h1`
+  margin-bottom: 40px;
+`;
+
+export { SectionStyles, SectionTitleStyled };

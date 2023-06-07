@@ -1,5 +1,6 @@
 import getTrending from 'api/getTrending';
 import MoviesList from 'components/MoviesList/MoviesList';
+import { Section } from 'components/Section/Section';
 import { useEffect, useState } from 'react';
 
 const HomePage = () => {
@@ -8,8 +9,8 @@ const HomePage = () => {
   useEffect(() => {
     const responseResolved = movies => {
       setTrendingMovies(movies);
-      };
-      
+    };
+
     const responseRejected = error => {
       console.log(error.message);
     };
@@ -17,7 +18,13 @@ const HomePage = () => {
     getTrending().then(responseResolved).catch(responseRejected);
   }, []);
 
-  return <MoviesList movies={trendingMovies} />;
+  return (
+    <main>
+      <Section title="Trending today">
+        <MoviesList movies={trendingMovies} />
+      </Section>
+    </main>
+  );
 };
 
 export default HomePage;

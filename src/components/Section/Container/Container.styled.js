@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 const ContainerStyles = styled.div`
   position: relative;
-  width: 1600px;
+  width: 1500px;
   margin: 0 auto;
   padding-left: 15px;
   padding-right: 15px;

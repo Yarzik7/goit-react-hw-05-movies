@@ -1,10 +1,20 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { MovieCardStyled, PosterStyled } from './MovieCard.styled';
 
-const MovieCard = ({ id, movieName }) => {
+const MovieCard = ({ id, movieName, poster_path }) => {
+const location = useLocation();
+
   return (
-    <li>
-      <Link to={`/movies/${id}`}>{movieName}</Link>
-    </li>
+    <MovieCardStyled>
+      <Link to={`/movies/${id}`} state={{ from: location }}>
+        <PosterStyled
+          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+          alt={movieName}
+        />
+
+        <h2>{movieName}</h2>
+      </Link>
+    </MovieCardStyled>
   );
 };
 
