@@ -56,6 +56,11 @@ const InfoLinksListStyled = styled.ul`
   gap: 10px;
 `;
 
+const GenresListStyled = styled.ul`
+ display: flex;
+ gap: 20px;
+`
+
 export {
   MovieGenerallInfoStyled,
   MovieTitleStyled,
@@ -66,4 +71,5 @@ export {
   GoBackBtnStyled,
   AddInfoTitleStyled,
   InfoLinksListStyled,
+  GenresListStyled,
 };

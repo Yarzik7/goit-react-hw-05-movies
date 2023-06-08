@@ -12,10 +12,7 @@ const MoviesDetailsPage = () => {
   const location = useLocation();
 
   const backLinkHref = location.state?.from ?? '/movies';
-
-  console.log(location);
-  console.log(backLinkHref);
-  console.log(typeof backLinkHref);
+  const [prevPage] = useState(backLinkHref);
 
   useEffect(() => {
     const responseResolved = movie => {
@@ -32,7 +29,7 @@ const MoviesDetailsPage = () => {
   return (
     <main>
       <Section>
-        <BackLink to={backLinkHref}>
+        <BackLink to={prevPage}>
           <HiArrowLeft size="24" />
           Go back
         </BackLink>

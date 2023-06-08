@@ -8,16 +8,14 @@ const requestParameters = {
   include_adult: false,
 };
 
+const baseURL = 'https://api.themoviedb.org/3/';
+
 async function getMovies(query, page = 1) {
   requestParameters.query = query;
   requestParameters.page = page;
   const parameters = new URLSearchParams(requestParameters); // Отримує частину url з параметрами
 
-  const response = await axios.get(`search/movie?${parameters}`);
-
-  // if (!response.data.results.length) {
-  //   return Promise.reject(new Error(`No movies by query: ${query}!`));
-  // }
+  const response = await axios.get(`${baseURL}search/movie?${parameters}`);
 
   return response.data.results;
 }

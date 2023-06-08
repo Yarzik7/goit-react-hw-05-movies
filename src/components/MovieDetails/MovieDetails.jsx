@@ -1,4 +1,4 @@
-import { Link, Outlet} from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -10,14 +10,14 @@ import {
   AddInfoContainerStyled,
   AddInfoTitleStyled,
   InfoLinksListStyled,
+  GenresListStyled,
 } from './MovieDetails.styled';
 import { Loader } from 'components/Loader/Loader';
-import plugPosterMovie from '../../images/plug-movie-poster.png'
+import plugPosterMovie from '../../images/plug-movie-poster.png';
+import { baseImageUrl } from 'constants/constants';
 
-const baseImageUrl = 'https://image.tmdb.org/t/p/w500';
-
-const MoviesDetails = ({ movie}) => {
-  const { poster_path, title, vote_average, overview } = movie;
+const MoviesDetails = ({ movie }) => {
+  const { poster_path, title, vote_average, overview, genres = [] } = movie;
 
   return (
     <>
@@ -42,7 +42,11 @@ const MoviesDetails = ({ movie}) => {
 
           <PartInfoContainerStyled>
             <InfoTitle>Genres</InfoTitle>
-            {/* <ul>{genres.map(({name}) => (<li>{name}</li>))}</ul> */}
+            <GenresListStyled>
+              {genres.map(({ name, id }) => (
+                <li key={id}>{name}</li>
+              ))}
+            </GenresListStyled>
           </PartInfoContainerStyled>
         </div>
       </MovieGenerallInfoStyled>

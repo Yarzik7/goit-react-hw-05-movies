@@ -6,6 +6,6 @@ const MovieCardStyled = styled.li`
 
 const PosterStyled = styled.img`
   margin-bottom: 15px;
-`
+`;
 
 export { MovieCardStyled, PosterStyled };

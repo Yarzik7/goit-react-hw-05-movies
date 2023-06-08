@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ReviewsListStyled } from "./Reviews.styled";
 import Message from "components/Message/Message";
+import { NOREVIEWSMESSAGE } from "constants/constants";
 
 const mapReviews = ({ id, author, content }) => (
   <ReviewItem
@@ -12,8 +13,6 @@ const mapReviews = ({ id, author, content }) => (
     content={content}
   />
 );
-
-const NOREVIEWSMESSAGE = "We don't have any reviews for this movie!"
 
 const Reviews = () => {
     const { movieId } = useParams();

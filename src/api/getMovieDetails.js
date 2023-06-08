@@ -5,14 +5,12 @@ const requestParameters = {
   language: 'en-US',
 };
 
+const baseURL = 'https://api.themoviedb.org/3/';
+
 async function getMovieDetails(id) {
   const parameters = new URLSearchParams(requestParameters); // Отримує частину url з параметрами
 
-  const response = await axios.get(`movie/${id}?${parameters}`);
-  
-  // if (!response.data.title) {
-  //   return Promise.reject(new Error(`No movie with id: ${id}!`));
-  // }
+  const response = await axios.get(`${baseURL}movie/${id}?${parameters}`);
 
   return response.data;
 }

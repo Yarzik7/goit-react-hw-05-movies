@@ -5,14 +5,12 @@ const requestParameters = {
   language: 'en-US',
 };
 
+const baseURL = 'https://api.themoviedb.org/3/';
+
 async function getCast(id) {
   const parameters = new URLSearchParams(requestParameters); // Отримує частину url з параметрами
 
-  const response = await axios.get(`movie/${id}/credits?${parameters}`);
-
-  // if (!response.data.cast.length) {
-  //   return Promise.reject(new Error(`No cast for movie with id: ${id}!`));
-  // }
+  const response = await axios.get(`${baseURL}movie/${id}/credits?${parameters}`);
 
   return response.data.cast;
 }

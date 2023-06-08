@@ -6,15 +6,13 @@ const requestParameters = {
   page: 1,
 };
 
+const baseURL = 'https://api.themoviedb.org/3/';
+
 async function getReviews(id, page = 1) {
   requestParameters.page = page;
   const parameters = new URLSearchParams(requestParameters); // Отримує частину url з параметрами
 
-  const response = await axios.get(`movie/${id}/reviews?${parameters}`);
-
-  // if (!response.data.results.length) {
-  //   return Promise.reject(new Error(`No reviews for movie with id: ${id}!`));
-  // }
+  const response = await axios.get(`${baseURL}movie/${id}/reviews?${parameters}`);
 
   return response.data.results;
 }
