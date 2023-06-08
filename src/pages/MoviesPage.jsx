@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import getMovies from 'api/getMovies';
 import { useSearchParams } from 'react-router-dom';
 import { Section } from 'components/Section/Section';
+import Message from 'components/Message/Message';
+import { NOMOVIESMESSAGE } from 'constants/constants';
 
 const MoviesPage = () => {
   const [page, setPage] = useState(1);
@@ -48,6 +50,7 @@ const MoviesPage = () => {
           <MoviesList movies={movies} />
         </Section>
       )}
+      {!movies.length && query && <Message message={`${NOMOVIESMESSAGE}${query}!`} />}
     </main>
   );
 };
