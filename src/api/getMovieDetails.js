@@ -10,9 +10,9 @@ async function getMovieDetails(id) {
 
   const response = await axios.get(`movie/${id}?${parameters}`);
   
-  if (!response.data.title) {
-    return Promise.reject(new Error(`No movie with id: ${id}!`));
-  }
+  // if (!response.data.title) {
+  //   return Promise.reject(new Error(`No movie with id: ${id}!`));
+  // }
 
   return response.data;
 }

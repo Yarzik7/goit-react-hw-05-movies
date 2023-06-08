@@ -26,8 +26,10 @@ const NavLinkStyled = styled(NavLink)`
   padding-top: 16px;
   padding-bottom: 16px;
 
+  font-size: 20px;
+
   &.active {
-    color: red;
+    color: #c21212;
   }
 `;
 

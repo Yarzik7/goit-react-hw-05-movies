@@ -6,6 +6,7 @@ import {
   NavLinkStyled,
 } from './Header.styled';
 import { Suspense } from 'react';
+import { Loader } from 'components/Loader/Loader';
 
 const Header = () => {
   return (
@@ -24,7 +25,7 @@ const Header = () => {
           </nav>
         </HeaderContainerStyled>
       </HeaderStyled>
-      <Suspense fallback={<div>Loading page...</div>}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </>

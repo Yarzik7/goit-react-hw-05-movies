@@ -1,12 +1,21 @@
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import MoviesDetails from 'components/MovieDetails/MovieDetails';
 import getMovieDetails from 'api/getMovieDetails';
 import { Section } from 'components/Section/Section';
+import { BackLink } from 'components/BackLink/BackLink';
+import { HiArrowLeft } from 'react-icons/hi';
 
 const MoviesDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
+  const location = useLocation();
+
+  const backLinkHref = location.state?.from ?? '/movies';
+
+  console.log(location);
+  console.log(backLinkHref);
+  console.log(typeof backLinkHref);
 
   useEffect(() => {
     const responseResolved = movie => {
@@ -23,7 +32,11 @@ const MoviesDetailsPage = () => {
   return (
     <main>
       <Section>
-        <MoviesDetails id={movieId} movie={movie} />
+        <BackLink to={backLinkHref}>
+          <HiArrowLeft size="24" />
+          Go back
+        </BackLink>
+        <MoviesDetails movie={movie} />
       </Section>
     </main>
   );

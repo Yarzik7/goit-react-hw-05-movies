@@ -1,8 +1,6 @@
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet} from 'react-router-dom';
 import { Suspense } from 'react';
 import PropTypes from 'prop-types';
-import { BackLink } from 'components/BackLink/BackLink';
-import { HiArrowLeft } from 'react-icons/hi';
 import {
   MovieGenerallInfoStyled,
   MovieTitleStyled,
@@ -13,23 +11,22 @@ import {
   AddInfoTitleStyled,
   InfoLinksListStyled,
 } from './MovieDetails.styled';
+import { Loader } from 'components/Loader/Loader';
+import plugPosterMovie from '../../images/plug-movie-poster.png'
 
-const MoviesDetails = ({ movie }) => {
+const baseImageUrl = 'https://image.tmdb.org/t/p/w500';
+
+const MoviesDetails = ({ movie}) => {
   const { poster_path, title, vote_average, overview } = movie;
 
-   const location = useLocation();
-   const backLinkHref = location.state?.from ?? '/movies';
-  //console.log(movie);
   return (
     <>
-      <BackLink to={backLinkHref}>
-        <HiArrowLeft size="24" />
-        Go back
-      </BackLink>
       <MovieGenerallInfoStyled>
         <div>
           <img
-            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+            src={
+              poster_path ? `${baseImageUrl}${poster_path}` : plugPosterMovie
+            }
             alt={`${title}`}
           />
         </div>
@@ -61,7 +58,7 @@ const MoviesDetails = ({ movie }) => {
           </li>
         </InfoLinksListStyled>
       </AddInfoContainerStyled>
-      <Suspense fallback={<div>Loading page...</div>}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </>
@@ -70,10 +67,10 @@ const MoviesDetails = ({ movie }) => {
 
 MoviesDetails.propTypes = {
   movie: PropTypes.shape({
-    poster_path: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    vote_average: PropTypes.number.isRequired,
-    overview: PropTypes.string.isRequired,
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+    vote_average: PropTypes.number,
+    overview: PropTypes.string,
   }).isRequired,
 };
 

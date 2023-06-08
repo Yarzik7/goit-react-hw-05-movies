@@ -21,7 +21,7 @@ const HomePage = () => {
   return (
     <main>
       <Section title="Trending today">
-        <MoviesList movies={trendingMovies} />
+        <MoviesList movies={trendingMovies ?? []} />
       </Section>
     </main>
   );

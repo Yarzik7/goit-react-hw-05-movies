@@ -10,9 +10,9 @@ async function getCast(id) {
 
   const response = await axios.get(`movie/${id}/credits?${parameters}`);
 
-  if (!response.data.cast.length) {
-    return Promise.reject(new Error(`No cast for movie with id: ${id}!`));
-  }
+  // if (!response.data.cast.length) {
+  //   return Promise.reject(new Error(`No cast for movie with id: ${id}!`));
+  // }
 
   return response.data.cast;
 }

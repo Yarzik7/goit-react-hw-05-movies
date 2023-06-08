@@ -15,11 +15,15 @@ const MoviesList = ({ movies }) => {
   return <MovieListStyled>{movies.map(mapMovies)}</MovieListStyled>;
 };
 
-mapMovies.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  poster_path: PropTypes.string.isRequired,
+MoviesList.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string,
+      name: PropTypes.string,
+      poster_path: PropTypes.string,
+    })
+  ).isRequired,
 };
 
 export default MoviesList;

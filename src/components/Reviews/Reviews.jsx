@@ -3,6 +3,7 @@ import ReviewItem from "components/ReviewItem/ReviewItem";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ReviewsListStyled } from "./Reviews.styled";
+import Message from "components/Message/Message";
 
 const mapReviews = ({ id, author, content }) => (
   <ReviewItem
@@ -11,6 +12,8 @@ const mapReviews = ({ id, author, content }) => (
     content={content}
   />
 );
+
+const NOREVIEWSMESSAGE = "We don't have any reviews for this movie!"
 
 const Reviews = () => {
     const { movieId } = useParams();
@@ -28,7 +31,15 @@ const Reviews = () => {
       getReviews(movieId).then(responseResolved).catch(responseRejected);
     }, [movieId]);
 
-    return <ReviewsListStyled>{reviews.map(mapReviews)}</ReviewsListStyled>;
+  return (
+    <>
+      {!!reviews.length ? (
+        <ReviewsListStyled>{reviews.map(mapReviews)}</ReviewsListStyled>
+      ) : (
+        <Message message={NOREVIEWSMESSAGE} />
+      )}
+    </>
+  );
 };
 
 export default Reviews;

@@ -15,9 +15,9 @@ async function getMovies(query, page = 1) {
 
   const response = await axios.get(`search/movie?${parameters}`);
 
-  if (!response.data.results.length) {
-    return Promise.reject(new Error(`No movies by query: ${query}!`));
-  }
+  // if (!response.data.results.length) {
+  //   return Promise.reject(new Error(`No movies by query: ${query}!`));
+  // }
 
   return response.data.results;
 }

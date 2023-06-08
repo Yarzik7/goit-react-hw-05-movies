@@ -12,9 +12,9 @@ async function getReviews(id, page = 1) {
 
   const response = await axios.get(`movie/${id}/reviews?${parameters}`);
 
-  if (!response.data.results.length) {
-    return Promise.reject(new Error(`No reviews for movie with id: ${id}!`));
-  }
+  // if (!response.data.results.length) {
+  //   return Promise.reject(new Error(`No reviews for movie with id: ${id}!`));
+  // }
 
   return response.data.results;
 }

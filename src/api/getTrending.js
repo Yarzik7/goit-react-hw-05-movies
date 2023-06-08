@@ -11,9 +11,9 @@ async function getTrending() {
 
   const response = await axios.get(`trending/all/day?${parameters}`);
 
-  if (!response.data.results.length) {
-    return Promise.reject(new Error(`No trending movies today!`));
-  }
+  // if (!response.data.results.length) {
+  //   return Promise.reject(new Error(`No trending movies today!`));
+  // }
 
   return response.data.results;
 }
